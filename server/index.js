@@ -4,8 +4,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-dotenv.config();
 
+import postRoutes from "./routes/postRoutes.js";
+
+
+dotenv.config();
 const app = express();
 
 app.use(bodyParser.json());
@@ -14,6 +17,13 @@ app.use(cors());
 
 const connectionString = process.env.MONGO_URL;
 const port = process.env.PORT || 5000;
+
+
+app.use("/posts", postRoutes);
+
+
+
+
 
 mongoose
   .connect(connectionString)
