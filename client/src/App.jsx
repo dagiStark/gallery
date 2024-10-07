@@ -2,19 +2,33 @@ import { Container, Typography, AppBar, Grow, Grid2 } from "@mui/material";
 import memories from "./assets/memories.png";
 import Posts from "./components/posts/Posts.jsx";
 import Form from "./components/form/Form.jsx";
-
+import { useDispatch } from "react-redux";
 
 import useStyles from "./styles.js";
+import { useEffect } from "react";
+
+import { getPosts } from "./actions/posts.js";
 
 function App() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
         <Typography className={classes.heading} variant="h2" align="center">
           Gallery
         </Typography>
-        <img className={classes.image} src={memories} alt="gallery" height={60} />
+        <img
+          className={classes.image}
+          src={memories}
+          alt="gallery"
+          height={60}
+        />
       </AppBar>
       <Grow in>
         <Container>
@@ -22,7 +36,7 @@ function App() {
             container
             justifyContent={"space-between"}
             alignItems={"stretch"}
-            spacing={4}   // to be changed
+            spacing={4} // to be changed
           >
             <Grid2 item="true" size={12}>
               <Posts />
