@@ -2,6 +2,8 @@ import { TextField, Button, Typography, Paper } from "@mui/material";
 import FileBase from "react-file-base64";
 import { useState } from "react";
 import useStyles from "./styles.js";
+import { useDispatch } from "react-redux";
+
 
 const Form = () => {
   const [postData, setPostData] = useState({
@@ -20,12 +22,14 @@ const Form = () => {
   return (
     <Paper className={classes.paper}>
       <form
-        action=""
         autoComplete="off"
         noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
+        {/* <Typography variant="h6">
+          {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
+        </Typography> */}
         <TextField
           name="creator"
           variant="outlined"
@@ -49,6 +53,8 @@ const Form = () => {
           variant="outlined"
           label="Message"
           fullWidth
+          multiline
+          rows={4}
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
@@ -57,39 +63,40 @@ const Form = () => {
         <TextField
           name="tags"
           variant="outlined"
-          label="Tags"
+          label="Tags (coma separated)"
           fullWidth
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(",") })
+          }
         />
-
         <div className={classes.fileInput}>
           <FileBase
             type="file"
             multiple={false}
-            onChange={({ base64 }) =>
-              setPostData({ ...postData, selectFile: base64 })
+            onDone={({ base64 }) =>
+              setPostData({ ...postData, selectedFile: base64 })
             }
           />
         </div>
-
         <Button
-          className={classes.buttonSubmit}
+          sx={{
+            marginBottom: "10px",
+          }}
+          variant="contained"
           color="primary"
+          size="large"
           type="submit"
           fullWidth
-          variant="contained"
-          size="large"
         >
           Submit
         </Button>
         <Button
-          className={classes.buttonSubmit}
-          color="primary"
-          fullWidth
           variant="contained"
+          color="secondary"
           size="small"
           onClick={clear}
+          fullWidth
         >
           Clear
         </Button>
