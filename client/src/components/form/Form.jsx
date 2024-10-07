@@ -23,7 +23,7 @@ const Form = () => {
         action=""
         autoComplete="off"
         noValidate
-        className={classes.form}
+        className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
         <TextField
