@@ -9,7 +9,7 @@ import {
 
 const router = express.Router();
 
-router.get("/posts", getPosts);
+router.get("/", getPosts);
 router.get("/post/:id", getPost);
 router.post("/post/create", createPost);
 router.put("/post/:id", updatePost);
