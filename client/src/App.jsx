@@ -21,7 +21,7 @@ function App() {
             container
             justifyContent={"space-between"}
             alignItems={"stretch"}
-            spacing={4}
+            spacing={4}   // to be changed
           >
             <Grid2 item="true" size={12}>
               <Posts />
