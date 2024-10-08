@@ -26,7 +26,7 @@ const createPost = async (req, res) => {
   }
 };
 
-const updatePost = async (id, post) => {
+const updatePost = async (req, res) => {
   const { id: _id } = req.params;
   const post = req.body;
 

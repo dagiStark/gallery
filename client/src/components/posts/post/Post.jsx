@@ -13,7 +13,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import moment from "moment";
 import PropTypes from "prop-types";
 
-const Post = ({ post }) => {
+const Post = ({ post, setCurrentId }) => {
   return (
     <Card
       sx={{
@@ -57,7 +57,11 @@ const Post = ({ post }) => {
           color: "white",
         }}
       >
-        <Button style={{ color: "white" }} size="small">
+        <Button
+          style={{ color: "white" }}
+          size="small"
+          onClick={() => setCurrentId(post._id)}
+        >
           <MoreHorizIcon fontSize="default" />
         </Button>
       </Box>
@@ -109,6 +113,7 @@ export default Post;
 
 Post.propTypes = {
   post: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     creator: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,

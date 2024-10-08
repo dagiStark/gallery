@@ -4,13 +4,14 @@ import memories from "./assets/memories.png";
 import Posts from "./components/posts/Posts.jsx";
 import Form from "./components/form/Form.jsx";
 import { useDispatch } from "react-redux";
-
+import { useState } from "react";
 import useStyles from "./styles.js";
 import { useEffect } from "react";
 
 import { getPosts } from "./actions/posts.js";
 
 function App() {
+  const [currentId, setCurrentId] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -44,10 +45,10 @@ function App() {
         <Container>
           <Grid container spacing={2}>
             <Grid size={8} mt={4}>
-              <Posts />
+              <Posts setCurrentId={setCurrentId} />
             </Grid>
             <Grid size={4} mt={4}>
-              <Form />
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>

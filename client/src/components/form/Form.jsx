@@ -3,10 +3,9 @@ import FileBase from "react-file-base64";
 import { useState } from "react";
 import useStyles from "./styles.js";
 import { useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts.js";
+import { createPost, updatePost } from "../../actions/posts.js";
 
-
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     creator: "",
     title: "",
@@ -14,17 +13,19 @@ const Form = () => {
     tags: "",
     selectFile: "",
   });
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const classes = useStyles();
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(postData))
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
   };
-  
+
   const clear = () => {};
-  const currentId = ""
 
   return (
     <Paper className={classes.paper}>
