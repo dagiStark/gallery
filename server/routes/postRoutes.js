@@ -13,6 +13,6 @@ router.get("/", getPosts);
 router.get("/post/:id", getPost);
 router.post("/", createPost);
 router.patch("/:id", updatePost);
-router.delete("/post/:id", deletePost);
+router.delete("/:id", deletePost);
 
 export default router;
