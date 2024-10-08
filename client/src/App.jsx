@@ -1,4 +1,5 @@
-import { Container, Typography, AppBar, Grow, Grid2 } from "@mui/material";
+import { Container, Typography, AppBar, Grow } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import memories from "./assets/memories.png";
 import Posts from "./components/posts/Posts.jsx";
 import Form from "./components/form/Form.jsx";
@@ -41,19 +42,14 @@ function App() {
       </AppBar>
       <Grow in>
         <Container>
-          <Grid2
-            container
-            justifyContent={"space-between"}
-            alignItems={"stretch"}
-            spacing={4} // to be changed
-          >
-            <Grid2 item="true" size={12}>
+          <Grid container spacing={2}>
+            <Grid size={8}>
               <Posts />
-            </Grid2>
-            <Grid2 item="true" size={12}>
+            </Grid>
+            <Grid size={4} mt={4}>
               <Form />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
         </Container>
       </Grow>
     </Container>

@@ -3,6 +3,7 @@ import FileBase from "react-file-base64";
 import { useState } from "react";
 import useStyles from "./styles.js";
 import { useDispatch } from "react-redux";
+import { createPost } from "../../actions/posts.js";
 
 
 const Form = () => {
@@ -13,11 +14,17 @@ const Form = () => {
     tags: "",
     selectFile: "",
   });
-
+  const dispatch = useDispatch()
   const classes = useStyles();
 
-  const handleSubmit = () => {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createPost(postData))
+  };
+  
   const clear = () => {};
+  const currentId = ""
 
   return (
     <Paper className={classes.paper}>
@@ -27,9 +34,9 @@ const Form = () => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        {/* <Typography variant="h6">
-          {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
-        </Typography> */}
+        <Typography variant="h6">
+          {currentId ? `Editing "to be included"` : "Creating a Memory"}
+        </Typography>
         <TextField
           name="creator"
           variant="outlined"
