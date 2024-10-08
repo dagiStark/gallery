@@ -43,7 +43,13 @@ function App() {
       </AppBar>
       <Grow in>
         <Container>
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              flexDirection: { xs: "column", md: "row" },
+            }}
+          >
             <Grid size={8} mt={4}>
               <Posts setCurrentId={setCurrentId} />
             </Grid>
