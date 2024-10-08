@@ -12,7 +12,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import moment from "moment";
 import PropTypes from "prop-types";
-import { deletePost } from "../../../actions/posts";
+import { deletePost, likePost } from "../../../actions/posts";
 import { useDispatch } from "react-redux";
 
 const Post = ({ post, setCurrentId }) => {
@@ -102,7 +102,11 @@ const Post = ({ post, setCurrentId }) => {
           justifyContent: "space-between",
         }}
       >
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => dispatch(likePost(post._id))}
+        >
           <ThumbUpIcon fontSize="small" /> Like {post.likeCount}
         </Button>
         <Button
