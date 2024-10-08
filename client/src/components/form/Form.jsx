@@ -1,9 +1,10 @@
 import { TextField, Button, Typography, Paper } from "@mui/material";
 import FileBase from "react-file-base64";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useStyles from "./styles.js";
 import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts.js";
+import PropTypes from "prop-types";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
@@ -28,6 +29,10 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(createPost(postData));
     }
   };
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
 
   const clear = () => {};
 
@@ -118,3 +123,8 @@ const Form = ({ currentId, setCurrentId }) => {
 };
 
 export default Form;
+
+Form.propTypes = {
+  currentId: PropTypes.string,
+  setCurrentId: PropTypes.func.isRequired,
+};

@@ -122,4 +122,5 @@ Post.propTypes = {
     selectedFile: PropTypes.string,
     title: PropTypes.string,
   }).isRequired,
+  setCurrentId: PropTypes.func.isRequired,
 };
