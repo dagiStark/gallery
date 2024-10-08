@@ -43,7 +43,7 @@ function App() {
       <Grow in>
         <Container>
           <Grid container spacing={2}>
-            <Grid size={8}>
+            <Grid size={8} mt={4}>
               <Posts />
             </Grid>
             <Grid size={4} mt={4}>
