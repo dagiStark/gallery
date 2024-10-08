@@ -2,7 +2,7 @@ import { TextField, Button, Typography, Paper } from "@mui/material";
 import FileBase from "react-file-base64";
 import { useState } from "react";
 import useStyles from "./styles.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts.js";
 
 const Form = ({ currentId, setCurrentId }) => {
@@ -13,6 +13,10 @@ const Form = ({ currentId, setCurrentId }) => {
     tags: "",
     selectFile: "",
   });
+  const post = useSelector((state) =>
+    currentId ? state.posts.find((p) => p._id === currentId) : null
+  );
+
   const dispatch = useDispatch();
   const classes = useStyles();
 
