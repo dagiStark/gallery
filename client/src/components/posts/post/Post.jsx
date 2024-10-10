@@ -47,28 +47,48 @@ const Post = ({ post, setCurrentId }) => {
           position: "absolute",
           top: "20px",
           left: "20px",
+          padding: "10px 20px",
+          borderRadius: "10px",
           color: "white",
+          textAlign: "left",
         }}
       >
-        <Typography variant="h6">{post.creator}</Typography>
-        <Typography variant="body2">
+        <Typography
+          variant="h6"
+          sx={{
+            fontWeight: "bold",
+            fontSize: "20px",
+          }}
+        >
+          {post.creator}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            color: "#ddd", // lighter text color for date
+            fontStyle: "italic",
+            fontWeight: "bold",
+            fontSize: "15px",
+          }}
+        >
           {moment(post.createdAt).fromNow()}
         </Typography>
       </Box>
+
       <Box
         sx={{
           position: "absolute",
           top: "20px",
-          right: "20px",
+          right: "10px",
           color: "white",
         }}
       >
         <Button
-          style={{ color: "white" }}
+          style={{ color: "white", }}
           size="small"
           onClick={() => setCurrentId(post._id)}
         >
-          <MoreHorizIcon fontSize="default" />
+          <MoreHorizIcon />
         </Button>
       </Box>
       <Box
@@ -85,6 +105,8 @@ const Post = ({ post, setCurrentId }) => {
       <Typography
         sx={{
           padding: "0 16px",
+          fontWeight: "bold",
+          fontSize: "30px",
         }}
         gutterBottom
         variant="h5"
@@ -108,8 +130,17 @@ const Post = ({ post, setCurrentId }) => {
           size="small"
           color="primary"
           onClick={() => dispatch(likePost(post._id))}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "linear-gradient(to right, #00b4ff 0%, #0d0d12 100%)",
+            color: "white",
+            padding: "5px 10px",
+          }}
         >
-          <ThumbUpIcon fontSize="small" /> Like {post.likeCount}
+          <ThumbUpIcon fontSize="small" sx={{ marginRight: "8px" }} />{" "}
+          {post.likeCount}
         </Button>
         <Button
           size="small"
@@ -126,9 +157,10 @@ const Post = ({ post, setCurrentId }) => {
             "&:hover": {
               background: "linear-gradient(to right, #ff4b4b 0%, #ff1f1f 100%)",
             },
+            fontWeight: "bold",
           }}
         >
-          <DeleteForeverIcon fontSize="small" /> Delete
+          <DeleteForeverIcon fontSize="small" />
         </Button>
       </CardActions>
     </Card>
