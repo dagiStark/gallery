@@ -54,7 +54,7 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">
+        <Typography variant="h6" sx={{ color: "rgba(0,183,255, 1)" }}>
           {currentId ? `Editing` : "Creating a Memory"}
         </Typography>
         <TextField
@@ -109,6 +109,8 @@ const Form = ({ currentId, setCurrentId }) => {
         <Button
           sx={{
             marginBottom: "10px",
+            background: "linear-gradient(to right, #00b4ff 0%, #0d0d12 100%)",
+            color: "white",
           }}
           variant="contained"
           color="primary"
@@ -124,6 +126,10 @@ const Form = ({ currentId, setCurrentId }) => {
           size="small"
           onClick={clear}
           fullWidth
+          sx={{
+            background: "linear-gradient(to right, #f01d1d 0%, #0d0d12 100%)",
+            color: "white",
+          }}
         >
           Clear
         </Button>
