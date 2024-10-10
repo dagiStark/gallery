@@ -27,6 +27,10 @@ function App() {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          borderRadius: "10px",
+          borderTopLeftRadius: "30%",
+          borderBottomRightRadius: "30%",
+          background: "linear-gradient(to right, #20298c 0%, #0d0d12 100%)"
         }}
         position="static"
         color="inherit"

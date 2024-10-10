@@ -24,9 +24,11 @@ const Post = ({ post, setCurrentId }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        borderRadius: "15px",
         height: "100%",
         position: "relative",
+        borderTopLeftRadius: "25%",
+        borderBottomRightRadius: "25%",
+        width: "250px",
       }}
     >
       <CardMedia
@@ -113,6 +115,18 @@ const Post = ({ post, setCurrentId }) => {
           size="small"
           color="primary"
           onClick={() => dispatch(deletePost(post._id))}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "linear-gradient(to right, #ff5f5f 0%, #ff3f3f 100%)",
+            color: "#fff",
+            padding: "5px 10px",
+            borderRadius: "5px",
+            "&:hover": {
+              background: "linear-gradient(to right, #ff4b4b 0%, #ff1f1f 100%)",
+            },
+          }}
         >
           <DeleteForeverIcon fontSize="small" /> Delete
         </Button>
