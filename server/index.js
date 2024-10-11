@@ -17,6 +17,7 @@ const connectionString = process.env.MONGO_URL;
 const port = process.env.PORT || 5000;
 
 app.use("/posts", postRoutes);
+app.get("/", (req, res) => res.send("Hello"));
 
 mongoose
   .connect(connectionString)
