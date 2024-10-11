@@ -11,7 +11,7 @@ const app = express();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://gallery-client-nu.vercel.app" }));
 
 const connectionString = process.env.MONGO_URL;
 const port = process.env.PORT || 5000;
